@@ -25,12 +25,6 @@ type Field struct {
 	Short bool   `json:"short"`
 }
 
-
-func main() {
-	webhook := "https://hooks.slack.com/services/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"
-	Send(webhook, "Test new library")
-}
-
 func Send(webhook string, message string) error {
 	requestBody, _ := json.Marshal(Slack{Text: message})
 	response, err := http.Post(webhook, "application/json", bytes.NewReader(requestBody))
